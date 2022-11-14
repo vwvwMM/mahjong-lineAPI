@@ -1,6 +1,5 @@
 Flask
 line-bot-sdk
-gunicorn
 python-decouple
 pymongo
 opencv-python-headless
