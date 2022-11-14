@@ -65,10 +65,10 @@ def handle_image_message(event):
             if exist_person:
                 new_score+=exist_person["score"]
                 db_people.find_one_and_update({"name":p['name']},{"$set":{"score":new_score}},upsert=True)
-                print('update person to:',{"name":p['name'],"score":new_score})
+                TextSendMessage(text='update person to:'+str({"name":p['name'],"score":new_score}))
             else:
                 db_people.insert_one({"name":p["name"],"score":new_score})
-                print('add a new person:',p)
+                TextSendMessage(text='add a new person:'+str(p))
     except:
         print('error')
         line_bot_api.reply_message(
