@@ -3,6 +3,6 @@ line-bot-sdk
 gunicorn
 python-decouple
 pymongo
-opencv-python
+opencv-python-headless
 pytesseract
 pillow
