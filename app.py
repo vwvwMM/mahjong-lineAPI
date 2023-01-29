@@ -19,13 +19,15 @@ from util import *
 MONGO_URL=config('MONGO_URL')
 IMAGE_PATH=config('IMAGE_PATH')
 PORT=config('PORT')
+LINE_API_KEY=config('LINE_API_KEY')
+LINE_CHANNEL_SECRET=config('LINE_CHANNEL_SECRET')
 
 cluster=MongoClient(MONGO_URL)
 db=cluster['mahjong']
 db_people=db['people']
 app=Flask(__name__)
-line_bot_api = LineBotApi('O91dI/Dha57YpV+HsZkquETJFrEsHpZZ2kmyTOMeRGojBSgTVbMyPijyXN8J9Gn351eejlUOU/93Ol/mgIKZYas9kVAW+YDKB/PpYxRgiZw1UsnZewK0ylKGctzG9pZDxbtUWdjkaSXkrm8/uZIyYAdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('13e4f47b2ab2b7453bd86a827d09bae1')
+line_bot_api = LineBotApi(LINE_API_KEY)
+handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
