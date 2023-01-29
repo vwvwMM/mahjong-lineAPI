@@ -1,7 +1,8 @@
 Flask
 line-bot-sdk
 python-decouple
-pymongo
-opencv-python-headless
-pytesseract
+pymongo==2.3
+opencv-python-headless==4.2.0.32
+pytesseract==0.3.9
 pillow
+dnspython

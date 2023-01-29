@@ -18,6 +18,7 @@ from util import *
 
 MONGO_URL=config('MONGO_URL')
 IMAGE_PATH=config('IMAGE_PATH')
+PORT=config('PORT')
 
 cluster=MongoClient(MONGO_URL)
 db=cluster['mahjong']
@@ -66,9 +67,11 @@ def handle_image_message(event):
                 new_score+=exist_person["score"]
                 db_people.find_one_and_update({"name":p['name']},{"$set":{"score":new_score}},upsert=True)
                 TextSendMessage(text='update person to:'+str({"name":p['name'],"score":new_score}))
+                print('update person to:'+str({"name":p['name'],"score":new_score}))
             else:
                 db_people.insert_one({"name":p["name"],"score":new_score})
                 TextSendMessage(text='add a new person:'+str(p))
+                print('add a new person:'+str(p))
     except:
         print('error')
         line_bot_api.reply_message(
@@ -76,5 +79,5 @@ def handle_image_message(event):
         TextSendMessage(text="圖片解析錯誤，請重新上傳"))
         
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=PORT)
     
