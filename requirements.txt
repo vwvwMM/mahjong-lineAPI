@@ -1,6 +1,3 @@
-h5py
-typing-extensions
-wheel
 Flask
 line-bot-sdk
 python-decouple

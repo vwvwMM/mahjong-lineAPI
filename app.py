@@ -81,5 +81,5 @@ def handle_image_message(event):
         TextSendMessage(text="圖片解析錯誤，請重新上傳"))
         
 if __name__=='__main__':
-    app.run(debug=True,port=PORT)
+    app.run(debug=False,port=PORT)
     
